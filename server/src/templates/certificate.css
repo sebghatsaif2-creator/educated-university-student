@@ -1,0 +1,1056 @@
+/* ==========================================================================
+   Kunduz University — Shared Trilingual A4 Landscape Certificate Stylesheet
+   Page: 297mm x 210mm (A4 Landscape), 100% offline local fonts & SVG artwork.
+   Themes: theme-classic | theme-official | theme-green | theme-modern |
+           theme-watermark | theme-cream | theme-blue-stripes | theme-gold-corners
+   ========================================================================== */
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+@media screen {
+  html,
+  body {
+    min-height: 100vh;
+    background: #dde3e8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .certificate-page {
+    box-shadow: 0 10px 36px rgba(15, 25, 40, 0.22);
+  }
+
+  html.chromeless-root,
+  body.chromeless {
+    min-height: 0;
+    width: 297mm;
+    height: 210mm;
+    background: #ffffff;
+    display: block;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body.chromeless .certificate-page {
+    box-shadow: none;
+  }
+
+  body.chromeless .preview-warning-banner {
+    display: none;
+  }
+
+  .preview-warning-banner {
+    width: 297mm;
+    margin-bottom: 8px;
+    padding: 8px 14px;
+    background: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffecb5;
+    border-radius: 6px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 10pt;
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+@media print {
+  html,
+  body {
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  .preview-warning-banner {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Base Theme Tokens (overridden per .theme-<key>)
+   -------------------------------------------------------------------------- */
+.certificate-page {
+  --page-bg: #ffffff;
+  --sheet-bg: #ffffff;
+  --ink-primary: #1a202c;
+  --ink-secondary: #374151;
+  --ink-muted: #5b6472;
+  --header-color: #16243a;
+  --faculty-color: #134b8a;
+  --title-color: #135496;
+  --title-rule: rgba(19, 84, 150, 0.28);
+  --accent-primary: #135496;
+  --accent-secondary: #b8912d;
+  --col-divider: rgba(30, 58, 95, 0.2);
+  --header-divider: rgba(30, 58, 95, 0.14);
+  --sig-line: rgba(30, 58, 95, 0.45);
+  --stamp-ring: rgba(30, 58, 95, 0.22);
+  --qr-border: rgba(30, 58, 95, 0.25);
+
+  --font-en: 'EB Garamond', Georgia, 'Times New Roman', serif;
+  --font-fa-header: 'Vazirmatn', 'Noto Naskh Arabic', sans-serif;
+  --font-fa-body: 'Vazirmatn', 'Noto Naskh Arabic', serif;
+  --font-ps: 'Noto Naskh Arabic', 'Vazirmatn', serif;
+
+  --body-size-en: 11.4pt;
+  --body-lh-en: 1.56;
+  --body-size-fa: 9.8pt;
+  --body-lh-fa: 1.92;
+  --body-size-ps: 10.3pt;
+  --body-lh-ps: 1.9;
+
+  position: relative;
+  width: 297mm;
+  height: 210mm;
+  max-width: 297mm;
+  max-height: 210mm;
+  overflow: hidden;
+  page-break-after: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  background: var(--page-bg);
+  color: var(--ink-primary);
+  direction: ltr;
+}
+
+/* Tiered density scaling for long certificate body text */
+.certificate-page.density-compact {
+  --body-size-en: 10.2pt;
+  --body-lh-en: 1.46;
+  --body-size-fa: 8.9pt;
+  --body-lh-fa: 1.78;
+  --body-size-ps: 9.4pt;
+  --body-lh-ps: 1.78;
+}
+
+.certificate-page.density-dense {
+  --body-size-en: 9.1pt;
+  --body-lh-en: 1.38;
+  --body-size-fa: 8.1pt;
+  --body-lh-fa: 1.66;
+  --body-size-ps: 8.5pt;
+  --body-lh-ps: 1.66;
+}
+
+.certificate-page.density-ultra {
+  --body-size-en: 8.1pt;
+  --body-lh-en: 1.32;
+  --body-size-fa: 7.3pt;
+  --body-lh-fa: 1.56;
+  --body-size-ps: 7.6pt;
+  --body-lh-ps: 1.56;
+}
+
+/* Strict RTL shaping & cursive joining safeguards for Dari & Pashto.
+   Never manually set init/medi/fina/isol in font-feature-settings — HarfBuzz applies
+   contextual Arabic/Dari/Pashto joining automatically when left at `normal`. */
+[dir='rtl'] {
+  direction: rtl;
+  letter-spacing: 0 !important;
+  font-kerning: normal;
+  font-variant-ligatures: normal;
+  font-feature-settings: normal;
+  text-rendering: optimizeLegibility;
+}
+
+.ltr-token {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+[dir='ltr'] {
+  direction: ltr;
+}
+
+/* --------------------------------------------------------------------------
+   Decorative Theme Layers (hidden by default; activated per .theme-<key>)
+   -------------------------------------------------------------------------- */
+.cert-sheet {
+  position: absolute;
+  inset: 0;
+  background: var(--sheet-bg);
+  z-index: 1;
+}
+
+.cert-frame-outer,
+.cert-frame-inner,
+.cert-side-stripe,
+.cert-watermark,
+.cert-svg-decor {
+  position: absolute;
+  pointer-events: none;
+}
+
+.cert-frame-outer {
+  inset: 7mm;
+  z-index: 2;
+}
+
+.cert-frame-inner {
+  inset: 10mm;
+  z-index: 2;
+}
+
+.cert-side-stripe {
+  display: none;
+  z-index: 3;
+}
+
+.cert-svg-decor {
+  inset: 0;
+  width: 297mm;
+  height: 210mm;
+  z-index: 3;
+}
+
+.cert-svg-decor .svg-blue-stripes,
+.cert-svg-decor .svg-gold-corners,
+.cert-svg-decor .svg-classic-corners,
+.cert-svg-decor .svg-cream-corners,
+.cert-svg-decor .svg-green-medallions {
+  display: none;
+}
+
+.cert-watermark {
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.cert-watermark img {
+  width: 112mm;
+  height: 112mm;
+  object-fit: contain;
+  opacity: 0.075;
+}
+
+/* --------------------------------------------------------------------------
+   Main Interior Layout (exact single A4 landscape fit)
+   -------------------------------------------------------------------------- */
+.cert-content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  padding: 12.5mm 17mm 11.5mm 17mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Top Emblem & Official-No Band */
+.cert-top-bar {
+  position: relative;
+  height: 23mm;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-logos {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 23mm;
+}
+
+.logo-university {
+  width: 22mm;
+  height: 22mm;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-ministry {
+  position: absolute;
+  right: calc(100% + 4.5mm);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14mm;
+  height: 14mm;
+  object-fit: contain;
+  display: block;
+}
+
+/* Official number anchored at the top of the right (Pashto) column */
+.pashto-official-box {
+  position: absolute;
+  right: 2mm;
+  top: 2mm;
+  direction: rtl;
+  font-family: var(--font-ps);
+  font-size: 9pt;
+  color: var(--header-color);
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+  white-space: nowrap;
+}
+
+.pashto-official-label {
+  font-weight: 700;
+  color: var(--header-color);
+}
+
+.pashto-official-value {
+  display: inline-block;
+  min-width: 28mm;
+  padding: 0 2mm 0.4mm;
+  border-bottom: 0.3mm solid var(--sig-line);
+  text-align: center;
+  font-family: 'Vazirmatn', sans-serif;
+  font-size: 8.6pt;
+  font-weight: 600;
+  color: var(--ink-primary);
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* Three-Column Institutional Header */
+.cert-header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 6mm;
+  align-items: start;
+  direction: ltr;
+  flex-shrink: 0;
+  margin-top: 1.5mm;
+  padding-bottom: 2.8mm;
+  border-bottom: 0.28mm solid var(--header-divider);
+}
+
+.hdr-col {
+  text-align: center;
+  color: var(--header-color);
+}
+
+.hdr-col p {
+  margin: 0;
+  padding: 0;
+}
+
+.hdr-col-en {
+  font-family: var(--font-en);
+  font-size: 10.2pt;
+  line-height: 1.38;
+}
+
+.hdr-col-en .hdr-ministry {
+  font-weight: 600;
+  font-size: 10.4pt;
+}
+
+.hdr-col-en .hdr-univ {
+  font-weight: 700;
+  font-size: 10.8pt;
+}
+
+.hdr-col-en .hdr-office {
+  font-weight: 400;
+  font-size: 9.7pt;
+}
+
+.hdr-col-en .hdr-faculty {
+  font-weight: 700;
+  font-size: 10.1pt;
+  color: var(--faculty-color);
+  margin-top: 0.4mm;
+}
+
+.hdr-col-fa {
+  font-family: var(--font-fa-header);
+  font-size: 9.1pt;
+  line-height: 1.55;
+}
+
+.hdr-col-fa .hdr-ministry {
+  font-weight: 700;
+  font-size: 9.4pt;
+}
+
+.hdr-col-fa .hdr-univ {
+  font-weight: 700;
+  font-size: 9.5pt;
+}
+
+.hdr-col-fa .hdr-office {
+  font-weight: 600;
+  font-size: 8.9pt;
+}
+
+.hdr-col-fa .hdr-faculty {
+  font-weight: 700;
+  font-size: 9.1pt;
+  color: var(--faculty-color);
+}
+
+.hdr-col-ps {
+  font-family: var(--font-ps);
+  font-size: 9.6pt;
+  line-height: 1.52;
+}
+
+.hdr-col-ps .hdr-ministry {
+  font-weight: 700;
+  font-size: 9.8pt;
+}
+
+.hdr-col-ps .hdr-univ {
+  font-weight: 700;
+  font-size: 9.9pt;
+}
+
+.hdr-col-ps .hdr-office {
+  font-weight: 600;
+  font-size: 9.3pt;
+}
+
+.hdr-col-ps .hdr-faculty {
+  font-weight: 700;
+  font-size: 9.5pt;
+  color: var(--faculty-color);
+}
+
+/* Three-Column Titles & Certificate Body */
+.cert-body-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  direction: ltr;
+  margin-top: 2.5mm;
+  margin-bottom: 2mm;
+  overflow: hidden;
+}
+
+.cert-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  padding: 0.5mm 4.5mm;
+}
+
+.cert-col-en {
+  padding-left: 1.5mm;
+}
+
+.cert-col-fa {
+  border-left: 0.28mm solid var(--col-divider);
+  border-right: 0.28mm solid var(--col-divider);
+}
+
+.cert-col-ps {
+  padding-right: 1.5mm;
+}
+
+.col-title {
+  margin: 0 0 3.2mm 0;
+  padding-bottom: 1.6mm;
+  text-align: center;
+  color: var(--title-color);
+  font-weight: 700;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.col-title::after {
+  content: '';
+  display: block;
+  width: 28mm;
+  height: 0.42mm;
+  background: var(--title-rule);
+  margin: 1.4mm auto 0;
+  border-radius: 1px;
+}
+
+.cert-col-en .col-title {
+  font-family: var(--font-en);
+  font-size: 14.5pt;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+}
+
+.cert-col-fa .col-title {
+  font-family: var(--font-fa-header);
+  font-size: 13.8pt;
+  line-height: 1.3;
+}
+
+.cert-col-ps .col-title {
+  font-family: var(--font-ps);
+  font-size: 14.4pt;
+  line-height: 1.28;
+}
+
+.col-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  color: var(--ink-primary);
+}
+
+.col-body p {
+  margin: 0 0 2.2mm 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.col-body p:last-child {
+  margin-bottom: 0;
+}
+
+.cert-col-en .col-body {
+  font-family: var(--font-en);
+  font-size: var(--body-size-en);
+  line-height: var(--body-lh-en);
+  text-align: justify;
+  text-align-last: left;
+}
+
+.cert-col-fa .col-body {
+  font-family: var(--font-fa-body);
+  font-size: var(--body-size-fa);
+  line-height: var(--body-lh-fa);
+  text-align: justify;
+  text-align-last: right;
+}
+
+.cert-col-ps .col-body {
+  font-family: var(--font-ps);
+  font-size: var(--body-size-ps);
+  line-height: var(--body-lh-ps);
+  text-align: justify;
+  text-align-last: right;
+}
+
+.col-closing {
+  margin-top: 2mm !important;
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+/* Bottom Footer: Signatures, Stamps, QR Code & Serial Number */
+.cert-footer {
+  height: 33mm;
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 48mm 1fr;
+  align-items: end;
+  column-gap: 6mm;
+  direction: ltr;
+  padding: 0 2mm;
+}
+
+.sig-block {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4mm;
+  height: 100%;
+}
+
+.sig-main {
+  flex: 1;
+  max-width: 68mm;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding-top: 1mm;
+}
+
+.sig-role-rtl {
+  font-family: var(--font-fa-header);
+  font-size: 8.2pt;
+  font-weight: 700;
+  color: var(--header-color);
+  line-height: 1.45;
+}
+
+.sig-role-ps {
+  font-family: var(--font-ps);
+  font-size: 8.5pt;
+  font-weight: 700;
+}
+
+.sig-role-sep {
+  margin: 0 1.2mm;
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+.sig-role-en {
+  font-family: var(--font-en);
+  font-size: 8.8pt;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  line-height: 1.2;
+}
+
+.sig-line-area {
+  margin-top: auto;
+  padding-top: 8mm;
+}
+
+.sig-line {
+  width: 52mm;
+  margin: 0 auto 1mm;
+  border-bottom: 0.32mm solid var(--sig-line);
+}
+
+.sig-caption {
+  font-family: var(--font-fa-header);
+  font-size: 6.9pt;
+  color: var(--ink-muted);
+}
+
+.stamp-circle {
+  width: 17.5mm;
+  height: 17.5mm;
+  border: 0.32mm dashed var(--stamp-ring);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 1.5mm;
+  color: var(--ink-muted);
+  opacity: 0.78;
+}
+
+.stamp-circle span {
+  display: block;
+  line-height: 1.2;
+}
+
+.stamp-label-fa {
+  font-family: var(--font-fa-header);
+  font-size: 6.5pt;
+}
+
+.stamp-label-en {
+  font-family: var(--font-en);
+  font-size: 6.5pt;
+}
+
+/* Center QR & Serial Block */
+.qr-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  height: 100%;
+}
+
+.qr-frame {
+  width: 21.5mm;
+  height: 21.5mm;
+  padding: 1.1mm;
+  background: #ffffff;
+  border: 0.3mm solid var(--qr-border);
+  border-radius: 1.5mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.serial-badge {
+  margin-top: 1.2mm;
+  font-family: 'Vazirmatn', monospace, sans-serif;
+  font-size: 7.6pt;
+  font-weight: 700;
+  color: var(--header-color);
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+}
+
+.verify-caption {
+  margin-top: 0.2mm;
+  font-family: var(--font-fa-header);
+  font-size: 6.3pt;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   THEME 1: theme-classic — Double border, royal navy & antique gold
+   ========================================================================== */
+.theme-classic {
+  --page-bg: #fcfbf7;
+  --sheet-bg: #fcfbf7;
+  --ink-primary: #182235;
+  --ink-secondary: #2d3d59;
+  --ink-muted: #5a667a;
+  --header-color: #13294b;
+  --faculty-color: #8f6b19;
+  --title-color: #13294b;
+  --title-rule: #c59b27;
+  --accent-primary: #13294b;
+  --accent-secondary: #c59b27;
+  --col-divider: rgba(197, 155, 39, 0.42);
+  --header-divider: rgba(19, 41, 75, 0.22);
+  --sig-line: rgba(19, 41, 75, 0.55);
+  --stamp-ring: rgba(184, 145, 45, 0.5);
+  --qr-border: rgba(19, 41, 75, 0.38);
+}
+
+.theme-classic .cert-frame-outer {
+  inset: 6.5mm;
+  border: 1.15mm solid #13294b;
+}
+
+.theme-classic .cert-frame-inner {
+  inset: 9.2mm;
+  border: 0.55mm solid #c59b27;
+  outline: 0.22mm solid rgba(19, 41, 75, 0.45);
+  outline-offset: -1.3mm;
+}
+
+.theme-classic .cert-svg-decor .svg-classic-corners {
+  display: block;
+}
+
+/* ==========================================================================
+   THEME 2: theme-official — Formal archival black & white (monochrome)
+   ========================================================================== */
+.theme-official {
+  --page-bg: #ffffff;
+  --sheet-bg: #ffffff;
+  --ink-primary: #0f0f0f;
+  --ink-secondary: #222222;
+  --ink-muted: #4a4a4a;
+  --header-color: #000000;
+  --faculty-color: #000000;
+  --title-color: #000000;
+  --title-rule: #111111;
+  --accent-primary: #000000;
+  --accent-secondary: #333333;
+  --col-divider: rgba(0, 0, 0, 0.32);
+  --header-divider: rgba(0, 0, 0, 0.38);
+  --sig-line: #111111;
+  --stamp-ring: rgba(0, 0, 0, 0.42);
+  --qr-border: #111111;
+}
+
+.theme-official .cert-frame-outer {
+  inset: 7mm;
+  border: 0.9mm solid #000000;
+}
+
+.theme-official .cert-frame-inner {
+  inset: 9.2mm;
+  border: 0.32mm solid #000000;
+}
+
+.theme-official .logo-university,
+.theme-official .logo-ministry {
+  filter: grayscale(100%) contrast(1.1);
+}
+
+/* ==========================================================================
+   THEME 3: theme-green — Islamic geometric border, emerald green & gold
+   ========================================================================== */
+.theme-green {
+  --page-bg: #fbfdfb;
+  --sheet-bg: #fbfdfb;
+  --ink-primary: #15261e;
+  --ink-secondary: #254436;
+  --ink-muted: #4e665a;
+  --header-color: #0d4a33;
+  --faculty-color: #136345;
+  --title-color: #0d4a33;
+  --title-rule: #c49a2c;
+  --accent-primary: #0d4a33;
+  --accent-secondary: #c49a2c;
+  --col-divider: rgba(13, 74, 51, 0.25);
+  --header-divider: rgba(196, 154, 44, 0.45);
+  --sig-line: rgba(13, 74, 51, 0.55);
+  --stamp-ring: rgba(13, 74, 51, 0.35);
+  --qr-border: rgba(13, 74, 51, 0.42);
+}
+
+.theme-green .cert-frame-outer {
+  inset: 5.5mm;
+  border: 0.7mm solid #0d4a33;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230d4a33' fill-opacity='0.06'/%3E%3Cpath d='M12 1 L23 12 L12 23 L1 12 Z' fill='none' stroke='%230d4a33' stroke-width='1.1' stroke-opacity='0.55'/%3E%3Cpath d='M12 5 L19 12 L12 19 L5 12 Z' fill='none' stroke='%23c49a2c' stroke-width='1' stroke-opacity='0.85'/%3E%3Ccircle cx='12' cy='12' r='1.6' fill='%23c49a2c' fill-opacity='0.8'/%3E%3C/svg%3E");
+  background-size: 5mm 5mm;
+}
+
+.theme-green .cert-frame-inner {
+  inset: 10.2mm;
+  background: #fbfdfb;
+  border: 0.6mm solid #c49a2c;
+  outline: 0.25mm solid #0d4a33;
+  outline-offset: -1.1mm;
+}
+
+.theme-green .cert-svg-decor .svg-green-medallions {
+  display: block;
+}
+
+.theme-green .cert-content {
+  padding: 13mm 17.5mm 12mm 17.5mm;
+}
+
+/* ==========================================================================
+   THEME 4: theme-modern — Clean architectural side stripe
+   ========================================================================== */
+.theme-modern {
+  --page-bg: #ffffff;
+  --sheet-bg: #ffffff;
+  --ink-primary: #1e293b;
+  --ink-secondary: #334155;
+  --ink-muted: #64748b;
+  --header-color: #0f2942;
+  --faculty-color: #16639c;
+  --title-color: #0f4c81;
+  --title-rule: #1d7cc2;
+  --accent-primary: #0f2942;
+  --accent-secondary: #d4a437;
+  --col-divider: rgba(15, 76, 129, 0.16);
+  --header-divider: rgba(15, 76, 129, 0.18);
+  --sig-line: rgba(15, 41, 66, 0.45);
+  --stamp-ring: rgba(29, 124, 194, 0.3);
+  --qr-border: rgba(15, 76, 129, 0.3);
+}
+
+.theme-modern .cert-side-stripe {
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 11mm;
+  background: linear-gradient(180deg, #0f2942 0%, #154573 55%, #0f2942 100%);
+  border-right: 1.5mm solid #d4a437;
+}
+
+.theme-modern .cert-side-stripe::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -3.2mm;
+  width: 0.7mm;
+  background: #1d7cc2;
+}
+
+.theme-modern .cert-frame-outer {
+  inset: 7mm 8mm 7mm 16.5mm;
+  border: 0.3mm solid rgba(15, 76, 129, 0.24);
+  border-top: 0.9mm solid #0f2942;
+}
+
+.theme-modern .cert-frame-inner {
+  display: none;
+}
+
+.theme-modern .cert-content {
+  padding: 12mm 14mm 11.5mm 21mm;
+}
+
+/* ==========================================================================
+   THEME 5: theme-watermark — Faint centered Kunduz University seal watermark
+   ========================================================================== */
+.theme-watermark {
+  --page-bg: #fcfdff;
+  --sheet-bg: #fcfdff;
+  --ink-primary: #172336;
+  --ink-secondary: #2c405e;
+  --ink-muted: #5a6c85;
+  --header-color: #183a6b;
+  --faculty-color: #1d5799;
+  --title-color: #184b8c;
+  --title-rule: rgba(24, 75, 140, 0.35);
+  --accent-primary: #184b8c;
+  --accent-secondary: #4e80bd;
+  --col-divider: rgba(24, 75, 140, 0.2);
+  --header-divider: rgba(24, 75, 140, 0.18);
+  --sig-line: rgba(24, 58, 107, 0.48);
+  --stamp-ring: rgba(24, 75, 140, 0.28);
+  --qr-border: rgba(24, 75, 140, 0.35);
+}
+
+.theme-watermark .cert-frame-outer {
+  inset: 7mm;
+  border: 0.75mm solid #1c4780;
+}
+
+.theme-watermark .cert-frame-inner {
+  inset: 9.2mm;
+  border: 0.28mm solid #7ca1cf;
+}
+
+.theme-watermark .cert-watermark {
+  display: flex;
+}
+
+.theme-watermark .cert-watermark img {
+  width: 118mm;
+  height: 118mm;
+  opacity: 0.085;
+}
+
+/* ==========================================================================
+   THEME 6: theme-cream — Warm parchment paper color & rich walnut-brown frame
+   ========================================================================== */
+.theme-cream {
+  --page-bg: #f6ecd6;
+  --sheet-bg: radial-gradient(ellipse at center, #fcf7ea 0%, #f7eed9 68%, #efe1c2 100%);
+  --ink-primary: #2b1a0e;
+  --ink-secondary: #4a301c;
+  --ink-muted: #6e5239;
+  --header-color: #472912;
+  --faculty-color: #6e3f19;
+  --title-color: #5c3314;
+  --title-rule: #a67638;
+  --accent-primary: #5c3314;
+  --accent-secondary: #a67638;
+  --col-divider: rgba(92, 51, 20, 0.25);
+  --header-divider: rgba(92, 51, 20, 0.24);
+  --sig-line: rgba(71, 41, 18, 0.55);
+  --stamp-ring: rgba(110, 63, 25, 0.38);
+  --qr-border: rgba(92, 51, 20, 0.45);
+}
+
+.theme-cream .cert-frame-outer {
+  inset: 6.5mm;
+  border: 1.05mm solid #5c3314;
+}
+
+.theme-cream .cert-frame-inner {
+  inset: 9.3mm;
+  border: 0.45mm solid #9c6b30;
+  outline: 0.22mm solid rgba(92, 51, 20, 0.4);
+  outline-offset: -1.2mm;
+}
+
+.theme-cream .cert-svg-decor .svg-cream-corners {
+  display: block;
+}
+
+/* ==========================================================================
+   THEME 7: theme-blue-stripes — Blue corner stripes (matches sample certificate)
+   ========================================================================== */
+.theme-blue-stripes {
+  --page-bg: #cfe8f7;
+  --sheet-bg: #ffffff;
+  --ink-primary: #1d242d;
+  --ink-secondary: #2d3a4a;
+  --ink-muted: #586778;
+  --header-color: #1b2838;
+  --faculty-color: #1168ad;
+  --title-color: #1368aa;
+  --title-rule: rgba(19, 104, 170, 0.28);
+  --accent-primary: #0d62b3;
+  --accent-secondary: #5bb4e8;
+  --col-divider: rgba(25, 88, 148, 0.22);
+  --header-divider: rgba(25, 88, 148, 0.14);
+  --sig-line: rgba(20, 72, 128, 0.48);
+  --stamp-ring: rgba(19, 104, 170, 0.3);
+  --qr-border: rgba(19, 104, 170, 0.35);
+}
+
+.theme-blue-stripes .cert-sheet {
+  inset: 5.5mm;
+  background: #ffffff;
+  border: 0.25mm solid rgba(19, 104, 170, 0.2);
+}
+
+.theme-blue-stripes .cert-frame-outer,
+.theme-blue-stripes .cert-frame-inner {
+  display: none;
+}
+
+.theme-blue-stripes .cert-svg-decor .svg-blue-stripes {
+  display: block;
+}
+
+.theme-blue-stripes .cert-content {
+  padding: 12.5mm 18mm 12mm 18mm;
+}
+
+/* ==========================================================================
+   THEME 8: theme-gold-corners — Gold diagonal ribbons & corner ornaments
+   (matches attached Education Faculty certificate sample)
+   ========================================================================== */
+.theme-gold-corners {
+  --page-bg: #eae6dc;
+  --sheet-bg: #fcfcfa;
+  --ink-primary: #1f252b;
+  --ink-secondary: #33404c;
+  --ink-muted: #5d6975;
+  --header-color: #1f2b36;
+  --faculty-color: #266584;
+  --title-color: #246482;
+  --title-rule: #c59b34;
+  --accent-primary: #266584;
+  --accent-secondary: #c59b34;
+  --col-divider: rgba(38, 101, 132, 0.24);
+  --header-divider: rgba(197, 155, 52, 0.35);
+  --sig-line: rgba(38, 80, 105, 0.5);
+  --stamp-ring: rgba(184, 142, 42, 0.42);
+  --qr-border: rgba(184, 142, 42, 0.48);
+}
+
+.theme-gold-corners .cert-sheet {
+  inset: 4.5mm;
+  background: #fcfcfa;
+  border: 0.35mm solid rgba(184, 142, 42, 0.5);
+}
+
+.theme-gold-corners .cert-frame-outer {
+  inset: 8.5mm;
+  border: 0.25mm solid rgba(197, 155, 52, 0.42);
+}
+
+.theme-gold-corners .cert-frame-inner {
+  display: none;
+}
+
+.theme-gold-corners .cert-svg-decor .svg-gold-corners {
+  display: block;
+}
+
+.theme-gold-corners .cert-content {
+  padding: 13mm 18.5mm 12mm 18.5mm;
+}

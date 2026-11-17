@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="لوگوی وزارت تحصیلات عالی">
+  <defs>
+    <linearGradient id="moheNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#16324f"/>
+      <stop offset="100%" stop-color="#244f7a"/>
+    </linearGradient>
+    <linearGradient id="moheGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#9e7619"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="94" fill="#ffffff" stroke="url(#moheGold)" stroke-width="5"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#moheNavy)" stroke-width="10"/>
+  <circle cx="100" cy="100" r="72" fill="#f8fafc" stroke="url(#moheGold)" stroke-width="2"/>
+  <!-- Academic cap emblem -->
+  <polygon points="100,56 144,76 100,96 56,76" fill="#16324f"/>
+  <path d="M72 85 L72 106 C72 114, 128 114, 128 106 L128 85" fill="none" stroke="#16324f" stroke-width="3.5"/>
+  <line x1="140" y1="78" x2="140" y2="108" stroke="url(#moheGold)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="140" cy="111" r="4" fill="#c59b27"/>
+  <!-- Label -->
+  <text x="100" y="138" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="700" fill="#16324f">وزارت تحصیلات عالی</text>
+  <text x="100" y="153" text-anchor="middle" font-family="serif" font-size="8.5" font-weight="700" fill="#244f7a" letter-spacing="0.8">MoHE AFGHANISTAN</text>
+</svg>

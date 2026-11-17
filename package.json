@@ -1,0 +1,26 @@
+{
+  "name": "kunduz-university-certificate-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline Certificate Request and Printing System for Kunduz University (Ministry of Higher Education, Afghanistan)",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "install:all": "PUPPETEER_SKIP_DOWNLOAD=true npm --prefix server install && npm --prefix client install",
+    "install:offline": "PUPPETEER_SKIP_DOWNLOAD=true npm --prefix server ci --offline --no-audit --no-fund && npm --prefix client ci --offline --no-audit --no-fund",
+    "prepare:offline-cache": "PUPPETEER_SKIP_DOWNLOAD=true npm --prefix server ci --cache ../offline/npm-cache && npm --prefix client ci --cache ../offline/npm-cache",
+    "dev": "npm --prefix server run dev",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "build:client": "npm --prefix client run build",
+    "start": "node -e \"if(!require('fs').existsSync('client/dist/index.html'))require('child_process').execSync('npm run build',{stdio:'inherit'})\" && npm --prefix server run start",
+    "seed": "npm --prefix server run seed",
+    "seed:reset": "npm --prefix server run seed:reset",
+    "generate:samples": "npm --prefix server run generate:samples",
+    "audit:offline": "node scripts/audit-offline.js",
+    "backup": "node scripts/backup-db.js",
+    "test": "npm --prefix server test"
+  }
+}

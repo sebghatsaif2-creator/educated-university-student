@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="واترمارک پوهنتون کندز">
+  <g opacity="0.14" fill="none" stroke="#0f4c3a">
+    <circle cx="120" cy="120" r="110" stroke-width="4"/>
+    <circle cx="120" cy="120" r="98" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <circle cx="120" cy="120" r="82" stroke-width="2.5"/>
+    <path d="M68 142 C85 134, 105 137, 120 147 C135 137, 155 134, 172 142 L172 98 C155 90, 135 93, 120 103 C105 93, 85 90, 68 98 Z"
+          stroke-width="3.5" stroke-linejoin="round"/>
+    <line x1="120" y1="103" x2="120" y2="147" stroke-width="3"/>
+    <path d="M98 90 A22 22 0 0 1 142 90" stroke-width="3"/>
+  </g>
+</svg>
