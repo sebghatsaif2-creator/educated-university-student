@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="لوگوی پوهنتون کندز">
+  <defs>
+    <linearGradient id="kuRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f4c3a"/>
+      <stop offset="100%" stop-color="#1b6b52"/>
+    </linearGradient>
+    <linearGradient id="kuGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#a67c1e"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="94" fill="#ffffff" stroke="url(#kuGold)" stroke-width="5"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#kuRing)" stroke-width="10"/>
+  <circle cx="100" cy="100" r="72" fill="#f7faf8" stroke="url(#kuGold)" stroke-width="2"/>
+  <!-- Open book emblem -->
+  <path d="M58 118 C72 112, 88 114, 100 122 C112 114, 128 112, 142 118 L142 84 C128 78, 112 80, 100 88 C88 80, 72 78, 58 84 Z"
+        fill="#ffffff" stroke="#0f4c3a" stroke-width="3" stroke-linejoin="round"/>
+  <line x1="100" y1="88" x2="100" y2="122" stroke="#0f4c3a" stroke-width="2.5"/>
+  <!-- Rising sun / light of knowledge -->
+  <path d="M82 78 A18 18 0 0 1 118 78" fill="none" stroke="url(#kuGold)" stroke-width="3"/>
+  <line x1="100" y1="50" x2="100" y2="57" stroke="#c59b27" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="82" y1="55" x2="86" y2="61" stroke="#c59b27" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="118" y1="55" x2="114" y2="61" stroke="#c59b27" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Label -->
+  <text x="100" y="143" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="700" fill="#0f4c3a">پوهنتون کندز</text>
+  <text x="100" y="157" text-anchor="middle" font-family="serif" font-size="8.5" font-weight="700" fill="#1b6b52" letter-spacing="0.6">KUNDUZ UNIVERSITY</text>
+</svg>
